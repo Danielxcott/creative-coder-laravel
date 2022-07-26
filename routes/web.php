@@ -18,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $blogs = Blog::with(['category','author'])->latest()->get();
+    $blogs = Blog::when(request('search'),function($q){
+        $search = request("search");
+        $q->orWhere("title","like","%$search%")
+        ->orWhere("description","like","%$search%");
+    })
+    ->with(['category','author'])
+    ->latest()
+    ->get();
     return view('blogs',[
         'blogs' => $blogs,
         'categories' => Category::all(),
