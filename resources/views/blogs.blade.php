@@ -3,8 +3,8 @@
     {{-- hero section --}}
     <x-hero/>
 
-    <!-- blogs section -->
-    <x-blogs-section :blogs="$blogs" :categories="$categories" :currentCategory="$currentCategory ?? null" />
+    <!--all blogs section -->
+    <x-blogs-section :blogs="$blogs" :categories="$categories"  />
 
     <!-- subscribe new blogs -->
    <x-subscribe />

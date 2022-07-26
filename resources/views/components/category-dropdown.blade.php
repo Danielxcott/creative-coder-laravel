@@ -4,8 +4,9 @@
    {{ request('category') ?? "Filter by Category" }}
   </button>
   <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/">All</a></li>
     @foreach ($categories as $category )
-    <li><a class="dropdown-item" href="/?category={{ $category->slug }}">{{ $category->title }}</a></li>
+    <li><a class="dropdown-item" href="/?category={{ $category->slug }}{{ request('search') ? "&search=".request('search') : ""   }}{{ request('username') ? "&usernmae=".request('username') : "" }}">{{ $category->title }}</a></li>
     @endforeach
   </ul>
 </div>

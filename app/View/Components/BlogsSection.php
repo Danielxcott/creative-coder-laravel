@@ -6,17 +6,16 @@ use Illuminate\View\Component;
 
 class BlogsSection extends Component
 {
-    public $blogs, $categories, $currentCategory;
+    public $blogs, $categories;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($blogs,$categories,$currentCategory="")
+    public function __construct($blogs,$categories)
     {
         $this->blogs = $blogs;
         $this->categories = $categories;
-        $this->currentCategory = $currentCategory;
     }
 
     /**

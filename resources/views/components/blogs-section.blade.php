@@ -8,6 +8,20 @@
   </div>
   <form action="" class="my-3">
     <div class="input-group mb-3">
+      @if (request('username'))
+      <input
+      type="hidden"
+      name="username"
+      value="{{ request('username') }}"
+    />
+      @endif
+      @if (request('category'))
+      <input
+      type="hidden"
+      name="category"
+      value="{{ request('category') }}"
+    />
+      @endif
       <input
         type="text"
         name="search"
