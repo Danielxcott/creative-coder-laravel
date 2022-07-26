@@ -48,4 +48,5 @@
      <p>There is no article at this point!</p>
     @endforelse
   </div>
+  {{ $blogs->onEachSide(1)->links() }}
 </section>

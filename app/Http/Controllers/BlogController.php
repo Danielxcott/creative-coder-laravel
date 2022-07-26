@@ -95,7 +95,8 @@ class BlogController extends Controller
     {
         $blogs = Blog::latest()->filter(request(['search','category','username']))   //string to array ,use []
         ->with(['category','author'])
-        ->get();
+        ->paginate(6)
+        ->withQueryString();
         return $blogs;
     }
 }
