@@ -17,7 +17,9 @@
     <div class="input-group mb-3">
       <input
         type="text"
+        name="search"
         autocomplete="false"
+        value="{{ request('search') }}"
         class="form-control"
         placeholder="Search Blogs..."
       />
