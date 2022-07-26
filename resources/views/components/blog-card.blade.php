@@ -12,7 +12,7 @@
       <span> - {{ $blog->created_at->diffForHumans() }}</span>
     </p>
     <div class="tags my-3">
-      <a href="/categories/{{ $blog->category->slug }}"><span class="badge bg-primary">{{ $blog->category->title }}</span> </a>
+      <a href="/?category={{ $blog->category->slug }}"><span class="badge bg-primary">{{ $blog->category->title }}</span> </a>
     </div>
     <p class="card-text">
       {{ $blog->excerpt }}
