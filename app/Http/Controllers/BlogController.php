@@ -93,7 +93,7 @@ class BlogController extends Controller
 
     protected function getBlogs()
     {
-        $blogs = Blog::latest()->filter(request(['search','category']))   //string to array ,use []
+        $blogs = Blog::latest()->filter(request(['search','category','username']))   //string to array ,use []
         ->with(['category','author'])
         ->get();
         return $blogs;
