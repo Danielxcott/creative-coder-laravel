@@ -20,6 +20,8 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show'])->where('blog','[A-z\d\-_]+');
 
-Route::get('/register',[AuthController::class,'create'])->name('register.create');
-Route::post('/register',[AuthController::class,'store'])->name('register.store');
-Route::post('/logout',[AuthController::class,'logout'])->name('register.logout');
+Route::get('/register',[AuthController::class,'create'])->name('register.create')->middleware('guest');
+Route::post('/register',[AuthController::class,'store'])->name('register.store')->middleware('guest');
+Route::post('/logout',[AuthController::class,'logout'])->name('auth.logout')->middleware('auth');
+Route::get('/login',[AuthController::class,'login'])->name('auth.login')->middleware('guest');
+Route::post('/login',[AuthController::class,'check_login'])->name('auth.checkLogin')->middleware('guest');

@@ -10,14 +10,14 @@
       <a href="#blogs" class="nav-link">Blogs</a>
       @guest
       <a href="{{ route('register.create') }}" class="nav-link">Register</a>
-      <a href="{{ route('register.create') }}" class="nav-link">Login</a>
+      <a href="{{ route('auth.login') }}" class="nav-link">Login</a>
       @else
       <div class="dropdown">
         <button class="btn text-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
          {{ Auth::user()->name }}
         </button>
         <ul class="dropdown-menu">
-          <form action="{{ route('register.logout') }}" method="post" id="logoutForm">
+          <form action="{{ route('auth.logout') }}" method="post" id="logoutForm">
             @csrf
           </form>
           <li><button class="dropdown-item btn-link" type="submit" form="logoutForm" href="#">logout</button></li>

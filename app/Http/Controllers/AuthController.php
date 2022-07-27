@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function create()
     {
-        return view('register.create');
+        return view('auth.register');
     }
     public function store(Request $request)
     {
@@ -39,5 +39,28 @@ class AuthController extends Controller
     {
         auth()->logout();
         return  redirect('/');
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function check_login()
+    {
+       $data = request()->validate([
+            'email' => ['required','email:rfc,dns',Rule::exists('users','email')],
+            'password' => ['required', 'string', 'min:8'],
+        ],[
+            'email.required' => "We need your email!"
+        ]);
+
+        if(auth()->attempt($data)){
+            return redirect('/')->with('success','Welcome back');
+        }else{
+            return redirect()->back()->withErrors([
+                'email' => 'User credentials wrong'
+            ]);
+        }
     }
 }
