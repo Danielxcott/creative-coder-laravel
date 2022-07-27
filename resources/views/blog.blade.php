@@ -20,8 +20,21 @@
         </div>
       </div>
     </div>
+    <section>
+      <div class="col-md-8 mx-auto">
+        @auth
+        <x-card-wrapper >
+          <x-comment-form :blog="$blog" />
+        </x-card-wrapper>
+        @else
+        <p class="text-center">Please <a href="{{ route('auth.login') }}">login</a> to participate in this discussion.</p>
+        @endauth
+      </div>
+    </section>
     <!--comment section -->
+    @if($blog->comments->count())
     <x-comment-section :comments="$blog->comments" :id="$blog->id" />
+    @endif
     <!-- subscribe new blogs -->
     <x-subscribe />
     <x-blogs-you-may-like :randomBlogs="$randomBlogs" />

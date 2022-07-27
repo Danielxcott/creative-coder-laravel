@@ -13,22 +13,15 @@
                                 is-invalid
                               @enderror" value="{{ old('name') }}" id="name">
                             </div>
-                            @error('name')
-                              <div class="text-danger">
-                                {{ $message }}
-                              </div>
-                            @enderror
+                            <x-error name="name" />
                           </div>
                           <div class="mb-3">
                             <label for="username" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
                               <input type="name" name="username" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" id="username">
                             </div>
-                            @error('username')
-                            <div class="text-danger">
-                              {{ $message }}
-                            </div>
-                            @enderror
+                            <x-error name="username" />
+
                           </div>
                         <div class="mb-3">
                           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
@@ -37,22 +30,14 @@
                               is-invalid
                             @enderror" value="{{ old('email') }}" id="inputEmail3">
                           </div>
-                          @error('email')
-                            <div class="text-danger">
-                              {{ $message }}
-                            </div>
-                            @enderror
+                          <x-error name="email" />
                         </div>
                         <div class="mb-3">
                           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                           <div class="col-sm-10">
                             <input type="password" name="password" class="form-control" id="inputPassword3">
                           </div>
-                          @error('password')
-                            <div class="text-danger">
-                              {{ $message }}
-                            </div>
-                            @enderror
+                          <x-error name="password" />
                         </div>
                        
                         <button type="submit" class="btn btn-primary">Sign up</button>
