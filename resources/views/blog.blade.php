@@ -20,7 +20,8 @@
         </div>
       </div>
     </div>
-
+    <!--comment section -->
+    <x-comment-section :comments="$blog->comments" :id="$blog->id" />
     <!-- subscribe new blogs -->
     <x-subscribe />
     <x-blogs-you-may-like :randomBlogs="$randomBlogs" />
