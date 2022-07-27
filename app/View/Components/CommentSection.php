@@ -2,20 +2,21 @@
 
 namespace App\View\Components;
 
+use App\Models\Comment;
 use Illuminate\View\Component;
 
-class BlogsSection extends Component
+class CommentSection extends Component
 {
-    public $blogs, $categories;
+    public $comments,$id;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($blogs,$categories)
+    public function __construct($comments,$id)
     {
-        $this->blogs = $blogs;
-        $this->categories = $categories;
+        $this->comments = $comments;
+        $this->id = $id;
     }
 
     /**
@@ -25,6 +26,8 @@ class BlogsSection extends Component
      */
     public function render()
     {
-        return view('components.blogs-section');
+        return view('components.comment-section',[
+            'countComments'=> Comment::where('blog_id',$this->id)->count()
+        ]);
     }
 }

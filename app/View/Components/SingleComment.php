@@ -4,18 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class BlogsSection extends Component
+class SingleComment extends Component
 {
-    public $blogs, $categories;
+    public $comment;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($blogs,$categories)
+    public function __construct($comment)
     {
-        $this->blogs = $blogs;
-        $this->categories = $categories;
+        $this->comment = $comment;
+
     }
 
     /**
@@ -25,6 +25,6 @@ class BlogsSection extends Component
      */
     public function render()
     {
-        return view('components.blogs-section');
+        return view('components.single-comment');
     }
 }

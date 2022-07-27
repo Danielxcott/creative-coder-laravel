@@ -10,8 +10,8 @@
           />
           <h3 class="my-3">{{ $blog->title }}</h3>
           <div class="mb-3">
-            <div class="text-bold h5">Author - <a href="/user/{{ $blog->author->username }}">{{ $blog->author->name }}</a></div>
-            <a href="/categories/{{ $blog->category->slug }}" class="text-decoration-none"><span class="badge bg-primary">{{ $blog->category->title }}</span> </a>
+            <div class="text-bold h5">Author - <a href="/?username={{ $blog->author->username }}">{{ $blog->author->name }}</a></div>
+            <a href="/?category={{ $blog->category->slug }}" class="text-decoration-none"><span class="badge bg-primary">{{ $blog->category->title }}</span> </a>
             <span>{{ $blog->created_at->format('d M Y') }}</span>
           </div>
           <p class="lh-md text-black-50">
@@ -20,7 +20,8 @@
         </div>
       </div>
     </div>
-
+    <!--comment section -->
+    <x-comment-section :comments="$blog->comments" :id="$blog->id" />
     <!-- subscribe new blogs -->
     <x-subscribe />
     <x-blogs-you-may-like :randomBlogs="$randomBlogs" />

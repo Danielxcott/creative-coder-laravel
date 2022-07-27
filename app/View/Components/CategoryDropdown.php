@@ -2,20 +2,19 @@
 
 namespace App\View\Components;
 
+use App\Models\Category;
 use Illuminate\View\Component;
 
-class BlogsSection extends Component
+class CategoryDropdown extends Component
 {
-    public $blogs, $categories;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($blogs,$categories)
+    public function __construct()
     {
-        $this->blogs = $blogs;
-        $this->categories = $categories;
+        //
     }
 
     /**
@@ -25,6 +24,8 @@ class BlogsSection extends Component
      */
     public function render()
     {
-        return view('components.blogs-section');
+        return view('components.category-dropdown',[
+            'categories' => Category::all(),   //pass this data to category dropdown components
+        ]);
     }
 }
