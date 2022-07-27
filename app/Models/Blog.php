@@ -10,7 +10,7 @@ class Blog extends Model
     use HasFactory;
     protected $fillable = ['title','description','slug','excerpt'];
 
-    public function scopeFilter($q,$filter)  //since filter() method is use in blogController we use scopeFilter, give Filter after scope
+    public function scopeFilter($q,$filter)  //since filter() method was used in blogController we use scopeFilter, give Filter after scope
     {
        $q->when($filter['search']??false,function($q,$search){
             // $search = request("search");
