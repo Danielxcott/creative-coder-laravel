@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscriberMail;
 use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -21,6 +23,11 @@ class CommentController extends Controller
         $comment->blog_id = $blog->id;
         $comment->save();
 
-        return back();
+        $subscribers = $blog->subscribers->filter(fn($subscriber)=> $subscriber->id != Auth::id());
+        $subscribers->each(function($subscriber) use ($blog) {
+            Mail::to($subscriber->email)->queue(new SubscriberMail($blog));
+        });
+
+        return redirect('/blog/'.$blog->slug);
     }
 }

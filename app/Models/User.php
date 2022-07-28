@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,13 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) //Mutators
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+    public function subscribedBlogs()
+    {
+        return $this->belongsToMany(Blog::class);
+    }
+    public function isSubscribe($blog)
+    {
+        return Auth::user()->subscribedBlogs && Auth::user()->subscribedBlogs->contains('id',$blog->id);
     }
 }
