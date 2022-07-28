@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminBlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,7 @@ Route::post('/logout',[AuthController::class,'logout'])->name('auth.logout')->mi
 Route::get('/login',[AuthController::class,'login'])->name('auth.login')->middleware('guest');
 Route::post('/login',[AuthController::class,'check_login'])->name('auth.checkLogin')->middleware('guest');
 
-Route::get('/admin/blog/create',[BlogController::class,'create'])->name('blog.create')->middleware('isAdmin');
-Route::post('/admin/blog/create',[BlogController::class,'store'])->name('blog.store')->middleware('isAdmin');
+Route::get('/admin/blog/create',[AdminBlogController::class,'create'])->name('blog.create')->middleware('isAdmin');
+Route::post('/admin/blog/create',[AdminBlogController::class,'store'])->name('blog.store')->middleware('isAdmin');
+
+Route::get('/admin/dashboard',[AdminBlogController::class,'index'])->middleware("auth")->name("admin.dashboard");
