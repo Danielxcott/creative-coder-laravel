@@ -35,3 +35,6 @@ Route::get('/admin/blog/create',[AdminBlogController::class,'create'])->name('bl
 Route::post('/admin/blog/create',[AdminBlogController::class,'store'])->name('blog.store')->middleware('isAdmin');
 
 Route::get('/admin/dashboard',[AdminBlogController::class,'index'])->middleware("auth")->name("admin.dashboard");
+Route::delete('/admin/dashboard/{blog:slug}/delete',[AdminBlogController::class,'destroy'])->middleware("auth")->name("destroy.blog");
+Route::get('/admin/dashboard/{blog:slug}/edit',[AdminBlogController::class,'edit'])->middleware("auth")->name("edit.blog");
+Route::put('/admin/dashboard/{blog:slug}/update',[AdminBlogController::class,'update'])->middleware("auth")->name("update.blog");

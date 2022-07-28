@@ -6,16 +6,17 @@ use Illuminate\View\Component;
 
 class CategoryList extends Component
 {
-    public $title,$categories;
+    public $title,$categories,$value;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title,$categories)
+    public function __construct($title,$categories,$value="")
     {
         $this->title = $title;
         $this->categories = $categories;
+        $this->value = $value;
     }
 
     /**

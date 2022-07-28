@@ -17,6 +17,9 @@
          {{ Auth::user()->name }}
         </button>
         <ul class="dropdown-menu">
+          @can('admin')
+          <li  class="dropdown-item" ><a class="text-decoration-none text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          @endcan
           <form action="{{ route('auth.logout') }}" method="post" id="logoutForm">
             @csrf
           </form>

@@ -4,7 +4,7 @@
   
   <textarea type="{{ $type }}" rows="10" name="{{ $title }}" class="form-control editor @error("$title")
     is-invalid
-  @enderror" id="{{ $title }}">{{ old("$title") }}
+  @enderror" id="{{ $title }}">{!! old("$title",$value) !!}
   </textarea>
 
   <x-error :name="$title" />
