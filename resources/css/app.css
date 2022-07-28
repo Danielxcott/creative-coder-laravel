@@ -4,3 +4,6 @@
     border-radius: 50%;
     object-fit: contain;
 }
+.blog-description{
+    white-space: pre-line;
+}

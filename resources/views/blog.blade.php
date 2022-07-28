@@ -17,9 +17,9 @@
             <a href="/?category={{ $blog->category->slug }}" class="text-decoration-none"><span class="badge bg-primary">{{ $blog->category->title }}</span> </a>
             <span>{{ $blog->created_at->format('d M Y') }}</span>
           </div>
-          <p class="lh-md text-black-50">
-            {{ $blog->description }}
-          </p>
+            <div class="lh-md text-black-50 blog-description">
+              {!! $blog->description !!}
+            </div>
         </div>
         @auth
         <div class="text-center">

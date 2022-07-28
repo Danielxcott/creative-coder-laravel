@@ -2,7 +2,7 @@
 
   <x-form.label :title="$title" />
   
-  <textarea type="{{ $type }}" rows="10" name="{{ $title }}" class="form-control @error("$title")
+  <textarea type="{{ $type }}" rows="10" name="{{ $title }}" class="form-control editor @error("$title")
     is-invalid
   @enderror" id="{{ $title }}">{{ old("$title") }}
   </textarea>
