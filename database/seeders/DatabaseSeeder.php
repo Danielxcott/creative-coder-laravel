@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +29,9 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             CommentSeeder::class,
         ]);
+
+        $photos = Storage::allFiles('public');
+        array_shift($photos);
+        Storage::delete($photos);
     }
 }

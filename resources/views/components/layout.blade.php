@@ -22,5 +22,21 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
+    <!-- Ckeditor -->
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+		<script>ClassicEditor
+				.create( document.querySelector( '.editor' ), {				
+					licenseKey: '',
+				} )
+				.then( editor => {
+					window.editor = editor;
+				} )
+				.catch( error => {
+					console.error( 'Oops, something went wrong!' );
+					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+					console.warn( 'Build id: 7hwokgdn7v7e-7dnd5auw20qh' );
+					console.error( error );
+				} );
+		</script>
   </body>
 </html>
