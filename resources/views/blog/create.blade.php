@@ -1,7 +1,4 @@
-<x-layout>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-8">
+<x-admin-dashboard>
                 <x-card-wrapper>
                     <h3>Upload Blog</h3>
                     <form action="{{ route('blog.store') }}" enctype="multipart/form-data" method="post">
@@ -14,7 +11,4 @@
                         <button type="submit" class="btn btn-primary">Upload</button>
                         </form>
                    </x-card-wrapper>
-            </div>
-        </div>
-    </div>
-    </x-layout>
+    </x-admin-dashboard>

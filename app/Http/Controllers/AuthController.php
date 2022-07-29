@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -56,7 +54,10 @@ class AuthController extends Controller
         ]);
 
         if(auth()->attempt($data)){
+           if(!auth()->user()->is_admin){
             return redirect('/')->with('success','Welcome back');
+           }
+           return redirect()->route('admin.dashboard');
         }else{
             return redirect()->back()->withErrors([
                 'email' => 'User credentials wrong'

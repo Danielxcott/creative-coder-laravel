@@ -1,22 +1,19 @@
 <?php
 
-namespace App\View\Components\form;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Input extends Component
+class AdminDashboard extends Component
 {
-    public $title,$type,$value;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title,$type="text",$value="")
+    public function __construct()
     {
-        $this->title = $title;
-        $this->type = $type;
-        $this->value = $value;
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class Input extends Component
      */
     public function render()
     {
-        return view('components.form.input');
+        return view('components.admin-dashboard');
     }
 }

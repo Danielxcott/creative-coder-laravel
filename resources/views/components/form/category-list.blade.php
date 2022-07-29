@@ -6,9 +6,9 @@
           @enderror">
               <option selected disabled>Select Category</option>
               @foreach ($categories as $category )
-                 <option {{ $category->id == old('category') ? "selected" : "" }} value="{{ $category->id }}">{{ $category->title }}</option> 
+                 <option {{ $category->id == old('category',$value) ? "selected" : "" }} value="{{ $category->id }}">{{ $category->title }}</option> 
               @endforeach
           </select>
-          <x-error :name="$category" />
+          <x-error :name="$title" />
       </div>
   </x-form.form-wrapper>
