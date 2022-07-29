@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -98,5 +100,16 @@ class BlogController extends Controller
         ->paginate(6)
         ->withQueryString();
         return $blogs;
+    }
+
+    public function subscribeHandler(Blog $blog)
+    {
+        if(User::find(Auth::id())->isSubscribe($blog))
+        {
+            $blog->unSubscribe();
+        }else{
+            $blog->subscribe();
+        }
+        return back();
     }
 }

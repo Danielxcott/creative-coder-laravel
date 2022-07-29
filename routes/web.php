@@ -21,6 +21,7 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show'])->where('blog','[A-z\d\-_]+');
 Route::post('/blog/{blog:slug}/comment',[CommentController::class,'store'])->name('comment.store');
+Route::post('/blog/{blog:slug}/subscription',[BlogController::class,'subscribeHandler'])->name('blog.subscribe');
 
 Route::get('/register',[AuthController::class,'create'])->name('register.create')->middleware('guest');
 Route::post('/register',[AuthController::class,'store'])->name('register.store')->middleware('guest');

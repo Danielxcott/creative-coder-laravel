@@ -1,3 +1,6 @@
+@php
+  use Illuminate\Support\Facades\Auth;
+@endphp
 <x-layout>
     <!-- single blog section -->
     <div class="container">
@@ -18,6 +21,18 @@
             {{ $blog->description }}
           </p>
         </div>
+        @auth
+        <div class="text-center">
+          <form action="{{ route('blog.subscribe',$blog->slug) }}" method="POST">
+            @csrf
+            @if (Auth::user()->isSubscribe($blog))
+            <button class="btn btn-danger">Unsubscribe</button>
+              @else
+            <button class="btn btn-primary">Subscribe</button>
+            @endif
+          </form>
+        </div>
+        @endauth
       </div>
     </div>
     <section>
@@ -33,10 +48,8 @@
     </section>
     <!--comment section -->
     @if($blog->comments->count())
-    <x-comment-section :comments="$blog->comments" :id="$blog->id" />
+    <x-comment-section :comments="$blog->comments()->latest()->paginate(3)" :id="$blog->id" />
     @endif
-    <!-- subscribe new blogs -->
-    <x-subscribe />
     <x-blogs-you-may-like :randomBlogs="$randomBlogs" />
 </x-layout>
 
